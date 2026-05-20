@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selo Água Para o Futuro - Instituto Acqua Brasil</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+       body {
+           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+           line-height: 1.6;
+           color: #333;
+           overflow-x: hidden;
+       }
+       /* Header */
+       header {
+           background: linear-gradient(135deg, #0077be 0%, #00a8e8 100%);
+           color: white;
+           padding: 1rem 0;
+           position: fixed;
+           width: 100%;
+           top: 0;
+           z-index: 1000;
+           box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+       }
+       nav {
+           max-width: 1200px;
+           margin: 0 auto;
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           padding: 0 2rem;
+       }
+       .logo {
+           font-size: 1.8rem;
+           font-weight: bold;
+           display: flex;
+           align-items: center;
+           gap: 10px;
+       }
+       .logo i {
+           font-size: 2rem;
+           color: #00d4ff;
+       }
+       .nav-links {
+           display: flex;
+           list-style: none;
+           gap: 2rem;
+       }
+       .nav-links a {
+           color: white;
+           text-decoration: none;
+           font-weight: 500;
+           transition: opacity 0.3s;
+       }
+       .nav-links a:hover {
+           opacity: 0.8;
+       }
+       /* Hero Section */
+       .hero {
+           background: linear-gradient(rgba(0,119,190,0.9), rgba(0,168,232,0.9)),
+                       url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23007acc" width="1200" height="600"/><circle fill="%2300d4ff" opacity="0.3" cx="200" cy="150" r="100"/><circle fill="%2300d4ff" opacity="0.2" cx="900" cy="400" r="150"/><circle fill="%2300d4ff" opacity="0.1" cx="600" cy="300" r="80"/></svg>');
+           background-size: cover;
+           height: 100vh;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           text-align: center;
+           color: white;
+           margin-top: 70px;
+       }
+       .hero-content h1 {
+           font-size: 3.5rem;
+           margin-bottom: 1rem;
+           text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+       }
+       .hero-content p {
+           font-size: 1.3rem;
+           margin-bottom: 2rem;
+           max-width: 600px;
+       }
+       .cta-button {
+           display: inline-block;
+           background: #ff6b35;
+           color: white;
+           padding: 15px 30px;
+           text-decoration: none;
+           border-radius: 50px;
+           font-weight: bold;
+           font-size: 1.1rem;
+           transition: all 0.3s;
+           box-shadow: 0 5px 15px rgba(255,107,53,0.4);
+       }
+       .cta-button:hover {
+           transform: translateY(-3px);
+           box-shadow: 0 8px 25px rgba(255,107,53,0.6);
+       }
+       /* Sections */
+       .container {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 4rem 2rem;
+       }
+       section {
+           padding: 4rem 0;
+       }
+       h2 {
+           font-size: 2.5rem;
+           text-align: center;
+           margin-bottom: 3rem;
+           color: #0077be;
+           position: relative;
+       }
+       h2::after {
+           content: '';
+           position: absolute;
+           bottom: -10px;
+           left: 50%;
+           transform: translateX(-50%);
+           width: 80px;
+           height: 4px;
+           background: linear-gradient(90deg, #0077be, #00a8e8);
+           border-radius: 2px;
+       }
+       /* Selo Section */
+       .selo-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+           gap: 2rem;
+           margin-bottom: 3rem;
+       }
+       .selo-card {
+           background: white;
+           padding: 2rem;
+           border-radius: 15px;
+           box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+           text-align: center;
+           transition: transform 0.3s, box-shadow 0.3s;
+           border-top: 5px solid #0077be;
+       }
+       .selo-card:hover {
+           transform: translateY(-10px);
+           box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+       }
+       .nivel-bronze { border-top-color: #cd7f32; }
+       .nivel-prata { border-top-color: #c0c0c0; }
+       .nivel-ouro { border-top-color: #ffd700; }
+       .nivel-icon {
+           font-size: 3rem;
+           margin-bottom: 1rem;
+       }
+       /* Content */
+       .content-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+           gap: 2rem;
+       }
+       .content-card {
+           background: white;
+           padding: 2.5rem;
+           border-radius: 15px;
+           box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+           transition: transform 0.3s;
+       }
+       .content-card:hover {
+           transform: translateY(-5px);
+       }
+       .content-card h3 {
+           color: #0077be;
+           font-size: 1.5rem;
+           margin-bottom: 1rem;
+       }
+       /* Curiosidades */
+       .curiosidades {
+           background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+       }
+       .curiosidade-item {
+           background: white;
+           padding: 2rem;
+           margin-bottom: 2rem;
+           border-radius: 15px;
+           box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+           border-left: 5px solid #00a8e8;
+       }
+       .curiosidade-item i {
+           font-size: 2rem;
+           color: #00a8e8;
+           margin-bottom: 1rem;
+       }
+       /* Footer */
+       footer {
+           background: #001f3f;
+           color: white;
+           text-align: center;
+           padding: 3rem 0 1rem;
+       }
+       .footer-content {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 0 2rem;
+       }
+       /* Responsive */
+       @media (max-width: 768px) {
+           .nav-links {
+               display: none;
+           }
+           .hero-content h1 {
+               font-size: 2.5rem;
+           }
+           .container {
+               padding: 2rem 1rem;
+           }
+       }
+       /* Scroll animations */
+       .fade-in {
+           opacity: 0;
+           transform: translateY(30px);
+           transition: all 0.6s ease;
+       }
+       .fade-in.visible {
+           opacity: 1;
+           transform: translateY(0);
+       }
+</style>
+</head>
+<body>
+<!-- Header -->
+<header>
+<nav>
+<div class="logo">
+<i class="fas fa-tint"></i>
+               Água Para o Futuro
+</div>
+<ul class="nav-links">
+<li><a href="#home">Início</a></li>
+<li><a href="#selo">O Selo</a></li>
+<li><a href="#funcionamento">Funcionamento</a></li>
+<li><a href="#aplicacao">Onde Aplicar</a></li>
+<li><a href="#parceiros">Parceiros</a></li>
+<li><a href="#curiosidades">Curiosidades</a></li>
+</ul>
+</nav>
+</header>
+<!-- Hero -->
+<section id="home" class="hero">
+<div class="hero-content fade-in">
+<h1>Selo Água Para o Futuro</h1>
+<p>Certificação que reconhece empresas comprometidas com a gestão hídrica eficiente e sustentável. Alinhado aos princípios ESG e ODS 6.</p>
+<a href="#selo" class="cta-button">Saiba Mais</a>
+</div>
+</section>
+<!-- O Que É o Selo -->
+<section id="selo" class="container">
+<h2 class="fade-in">O Que É o Selo</h2>
+<div class="selo-grid">
+<div class="selo-card fade-in">
+<div class="nivel-icon"><i class="fas fa-certificate"></i></div>
+<h3>O Selo Água Para o Futuro</h3>
+<p>Consiste em uma certificação desenvolvida pelo <strong>Instituto Acqua Brasil</strong>, com apoio da <strong>BrasilAgro</strong>, destinada ao reconhecimento de empresas que adotam práticas responsáveis, mensuráveis e sustentáveis relacionadas ao uso da água.</p>
+</div>
+<div class="selo-card nivel-bronze fade-in">
+<div class="nivel-icon"><i class="fas fa-medal"></i></div>
+<h3>Bronze</h3>
+<p>Cumpre requisitos mínimos de gestão hídrica.</p>
+</div>
+<div class="selo-card nivel-prata fade-in">
+<div class="nivel-icon"><i class="fas fa-medal"></i></div>
+<h3>Prata</h3>
+<p>Práticas estruturadas e consistentes de eficiência hídrica.</p>
+</div>
+<div class="selo-card nivel-ouro fade-in">
+<div class="nivel-icon"><i class="fas fa-medal"></i></div>
+<h3>Ouro</h3>
+<p>Excelência + inovação em gestão hídrica.</p>
+</div>
+</div>
+<div style="text-align: center; margin-top: 2rem;">
+<p><strong>Alinhamento:</strong> Princípios ESG | ISO 14001 | ODS 6 (Água Potável e Saneamento)</p>
+</div>
+</section>
+<!-- Funcionamento -->
+<section id="funcionamento" class="container">
+<h2 class="fade-in">Como Funciona</h2>
+<div class="content-grid">
+<div class="content-card fade-in">
+<h3><i class="fas fa-clipboard-check"></i> Processo Estruturado</h3>
+<p>Avaliação, validação e auditoria técnica das empresas participantes com critérios que contemplam eficiência no consumo de água, reaproveitamento hídrico, tratamento de efluentes, governança ambiental e transparência ESG.</p>
+</div>
+<div class="content-card fade-in">
+<h3><i class="fas fa-chart-line"></i> Pontuação por Pilares</h3>
+<p>A classificação em Bronze, Prata ou Ouro é baseada em pontuações distribuídas por pilares específicos de desempenho hídrico.</p>
+</div>
+<div class="content-card fade-in">
+<h3><i class="fas fa-industry"></i> Público-Alvo</h3>
+<p>Empresas dos segmentos industrial, agrícola, logístico, varejista, hospitalar e demais instituições com elevado consumo hídrico.</p>
+</div>
+</div>
+</section>
+<!-- Onde Aplicar -->
+<section id="aplicacao" class="container">
+<h2 class="fade-in">Onde Aplicar o Selo</h2>
+<div class="content-grid">
+<div class="content-card fade-in">
+<h3><i class="fas fa-box"></i> Embalagens de Produtos</h3>
+<p>Destaque a certificação diretamente nos produtos.</p>
+</div>
+<div class="content-card fade-in">
+<h3><i class="fas fa-globe"></i> Sites Institucionais</h3>
+<p>Integre o selo em todas as páginas do site.</p>
+</div>
+<div class="content-card fade-in">
+<h3><i class="fas fa-file-alt"></i> Relatórios ESG</h3>
+<p>Reforce o compromisso em relatórios anuais.</p>
+</div>
+<div class="content-card fade-in">
+<h3><i class="fas fa-building"></i> Fachadas Corporativas</h3>
+<p>Visibilidade máxima para parceiros e clientes.</p>
+</div>
+</div>
+</section>
+<!-- Parceiros -->
+<section id="parceiros" class="container" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+<h2 class="fade-in">Nossos Parceiros Estratégicos</h2>
+<div class="content-grid">
+<div class="content-card fade-in">
+<h3><i class="fas fa-handshake"></i> Por que a BrasilAgro?</h3>
+<p>A <strong>BrasilAgro</strong> foi escolhida por sua relevância no agronegócio e alinhamento com práticas ESG. O setor agrícola depende da água, e a parceria fortalece a credibilidade do projeto, promovendo gestão hídrica eficiente e desenvolvimento sustentável.</p>
+</div>
+<div class="content-card fade-in">
+<h3><i class="fas fa-seedling"></i> Instituto Acqua Brasil</h3>
+<p>O <strong>Instituto Acqua Brasil</strong> lidera o projeto por seu compromisso com a conscientização ambiental, educação hídrica e promoção de práticas sustentáveis, articulando empresas, sociedade e meio ambiente.</p>
+</div>
+</div>
+</section>
+<!-- Curiosidades -->
+<section id="curiosidades" class="curiosidades">
+<div class="container">
+<h2 class="fade-in">Curiosidades</h2>
+<div class="curiosidade-item fade-in">
+<i class="fas fa-lightbulb"></i>
+<h3>🧠 70% da água doce mundial está em geleiras</h3>
+<p>Preservar recursos hídricos é essencial para as futuras gerações.</p>
+</div>
+<div class="curiosidade-item fade-in">
+<i class="fas fa-lightbulb"></i>
+<h3>💧 Agricultura usa 70% da água global</h3>
+<p>Gestão eficiente no agro é crucial para sustentabilidade.</p>
+</div>
+<div class="curiosidade-item fade-in">
+<i class="fas fa-lightbulb"></i>
+<h3>🌍 ODS 6: Água para Todos</h3>
+<p>O selo está alinhado ao Objetivo 6 da ONU.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer>
+<div class="footer-content">
+<h3><i class="fas fa-tint"></i> Água Para o Futuro</h3>
+<p>Certificação pelo Instituto Acqua Brasil | Parceria BrasilAgro</p>
+<p>&copy; 2024 Todos os direitos reservados.</p>
+</div>
+</footer>
+<script>
+       // Smooth scrolling
+       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+           anchor.addEventListener('click', function (e) {
+               e.preventDefault();
+               document.querySelector(this.getAttribute('href')).scrollIntoView({
+                   behavior: 'smooth'
+               });
+           });
+       });
+       // Fade in animation on scroll
+       const observerOptions = {
+           threshold: 0.1,
+           rootMargin: '0px 0px -50px 0px'
+       };
+       const observer = new IntersectionObserver(function(entries) {
+           entries.forEach(entry => {
+               if (entry.isIntersecting) {
+                   entry.target.classList.add('visible');
+               }
+           });
+       }, observerOptions);
+       document.querySelectorAll('.fade-in').forEach(el => {
+           observer.observe(el);
+       });
+</script>
+</body>
+</html>
